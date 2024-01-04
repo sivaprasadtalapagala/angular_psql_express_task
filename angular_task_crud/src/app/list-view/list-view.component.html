@@ -1,0 +1,29 @@
+<!-- list-view.component.html -->
+
+<div class="container">
+    <h2>List View</h2>
+  
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items">
+          <td>{{ item.name }}</td>
+          <td>{{ item.description }}</td>
+          <td>
+            <button (click)="viewDetails(item.id)" class="btn btn-info px-2">View Details</button>
+            <button (click)="updateItem(item.id)" class="btn btn-warning px-2">Update</button>
+            <button (click)="deleteItem(item.id)" class="btn btn-danger px-2">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <button (click)="createItem()" class="btn btn-success">Create Item</button>
+  </div>
+  

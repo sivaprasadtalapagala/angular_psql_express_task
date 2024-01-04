@@ -1,0 +1,14 @@
+<!-- detail-view.component.html -->
+
+<div class="container">
+    <h2>Detail View</h2>
+  
+    <div *ngIf="item">
+      <p><strong>Name:</strong> {{ item.name }}</p>
+      <p><strong>Description:</strong> {{ item.description }}</p>
+      <!-- Display other details as needed -->
+    </div>
+  
+    <a routerLink="/">Back to List</a>
+  </div>
+  

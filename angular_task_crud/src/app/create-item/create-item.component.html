@@ -1,0 +1,20 @@
+<!-- create-item.component.html -->
+
+<div class="container">
+  <h2>Create Item</h2>
+
+  <form [formGroup]="itemForm" (ngSubmit)="createItem()">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" id="name" formControlName="name" required>
+    </div>
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea class="form-control" id="description" formControlName="description" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-success p-2">Create</button>
+    <button type="button" (click)="cancel()" class="btn btn-secondary">Cancel</button>
+  </form>
+
+  <a routerLink="/">Back to List</a>
+</div>
