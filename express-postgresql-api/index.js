@@ -3,6 +3,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { Pool } = require('pg');
+const cors = require('cors'); // Import the cors middleware
 
 const app = express();
 const port = 3000;
@@ -10,7 +11,7 @@ const port = 3000;
 // PostgreSQL configuration
 // Create a new Pool instance for connecting to PostgreSQL
 const pool = new Pool({
-  user: 'postgres',
+  user: 'test_user',
   host: 'localhost',
   database: 'crud',
   password: 'test',
@@ -18,6 +19,27 @@ const pool = new Pool({
 });
 
 
+// Function to initialize the database (create the 'items' table)
+const initializeDatabase = async () => {
+  try {
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS items (
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(255),
+        description TEXT
+      )
+    `);
+    console.log('Database initialized successfully');
+  } catch (error) {
+    console.error('Error initializing database:', error);
+  }
+};
+
+// Call the initializeDatabase function when the application starts
+initializeDatabase();
+
+// Enable CORS
+app.use(cors());
 // Middleware
 app.use(bodyParser.json());
 
